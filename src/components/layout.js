@@ -6,26 +6,40 @@
  */
 
 import * as React from "react"
-import PropTypes from "prop-types"
+
 import { useStaticQuery, graphql } from "gatsby"
 
+import { RecoilRoot } from "recoil"
 import Header from "./header"
 import "./layout.css"
+import Preloader from "./Blog/Preloader"
+import GoTop from "./Blog/GoTop"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  const [loader, setLoader] = React.useState(true)
+
+  React.useEffect(() => {
+    setTimeout(() => setLoader(false), 1500)
+  }, [])
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <RecoilRoot>
+        {children}
+        {loader ? <Preloader /> : null}
+
+        {/* <GoTop scrollStepInPx="100" delayInMs="10.50" /> */}
+      </RecoilRoot>
+      {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
           margin: `0 auto`,
@@ -43,13 +57,9 @@ const Layout = ({ children }) => {
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
-      </div>
+      </div> */}
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

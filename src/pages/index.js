@@ -1,28 +1,46 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+// import "../assets/css/main.css"
+import Footer from "../components/Blog/Footer"
+import BlogPost from "../components/Index/BlogPost"
+export const query = graphql`
+  {
+    allStrapiArticles {
+      edges {
+        node {
+          title
+          content
+          id
+        }
+      }
+    }
+  }
+`
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <Layout>
     <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
+    <BlogPost />
+    {/* <div className="main-area">
+      <div
+        className="main-left-img"
+        style={{
+          backgroundImage: `url(${nodes[0].image.childImageSharp.fluid.src})`,
+        }}
+      >
+        <Image fluid={nodes[0].image.childImageSharp.fluid} />
+      </div>
+
+      <div className="main-content">
+        {nodes.map((cnt, idx) => {
+          return <MainBanner key={idx} {...cnt} />
+        })}
+      </div>
+    </div> */}
   </Layout>
 )
 
