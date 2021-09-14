@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: `my own Blog`,
@@ -20,7 +23,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: "http://localhost:1337",
+        apiURL: process.env.API_URL || "http://localhost:1337",
         contentTypes: [
           // List of the Content Types you want to be able to request from Gatsby.
           "articles",
