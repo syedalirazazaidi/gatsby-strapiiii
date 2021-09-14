@@ -23,8 +23,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL:
-          process.env.API_URL || "https://zealous-wright-a330b3.netlify.app/",
+        apiURL: process.env.API_URL || "myjamstackblocls.netlify.app",
         contentTypes: [
           // List of the Content Types you want to be able to request from Gatsby.
           "articles",
