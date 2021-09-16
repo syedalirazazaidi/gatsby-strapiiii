@@ -4,7 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-// import "../assets/css/main.css"
+
 import Footer from "../components/Blog/Footer"
 import BlogPost from "../components/Index/BlogPost"
 export const query = graphql`
