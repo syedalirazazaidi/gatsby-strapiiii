@@ -25,22 +25,6 @@ const IndexPage = ({ data }) => (
   <Layout>
     <Seo title="Home" />
     <BlogPost />
-    {/* <div className="main-area">
-      <div
-        className="main-left-img"
-        style={{
-          backgroundImage: `url(${nodes[0].image.childImageSharp.fluid.src})`,
-        }}
-      >
-        <Image fluid={nodes[0].image.childImageSharp.fluid} />
-      </div>
-
-      <div className="main-content">
-        {nodes.map((cnt, idx) => {
-          return <MainBanner key={idx} {...cnt} />
-        })}
-      </div>
-    </div> */}
   </Layout>
 )
 
